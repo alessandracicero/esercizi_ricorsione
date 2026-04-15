@@ -26,5 +26,17 @@
 
 
 #ESISTE TOOL PER CREARE DELLE MEMORIE CACHE @lru_cache
-#
-#
+#Questa tecnica di memorizzare le info calcolate, si chiama meoization
+# posso crearla manualmente o usare il tool
+#Per usare lru deve essere hashable, inolte memorizza solo se la funzioneda un return del risultato,
+# se la funzione fa anche altre cose,
+# tagliamo l'esecuzione di altri effettii
+
+
+#ANlazziafe il problema e cosa rappresenta un dato livello
+# nei casi in cui la solizione si  compone gradualemnte
+#può essere utile distinguere sol completa
+# mentre soluzioni parziali la compongono
+#dato un certo livello, come faccio a genare soluzioni succesive?
+#come riconosco sol pariale da quella generale?
+#quando una soluzione è ammissibile?

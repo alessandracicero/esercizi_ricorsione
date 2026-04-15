@@ -6,6 +6,8 @@ from typing import Dict
 class Fibonacci:
     def __init__(self):
         self.cache={0:0,1:1}
+        self.ricorsione=0 # creo variabile per contare invocazioni
+        self.ricorsioneCache=0
 
 
     def calcola_elemento_cache(self,n):
@@ -16,6 +18,7 @@ class Fibonacci:
             #altrimento devo andare avanti
             # con la ricorsione
         else:
+            self.ricorsioneCache+=1
             self.cache[n]=(self.calcola_elemento_cache(n-1)+
                            self.calcola_elemento_cache(n-2))
             return self.cache[n]
@@ -31,10 +34,11 @@ class Fibonacci:
             return 1
         #caso ricorsivo
         else:
+            self.ricorsione+=1
             return self.calcola_elemento(n-1) + self.calcola_elemento(n-2)
 
         pass
-    @lru_cache
+    @lru_cache#Memoization
     def calcola_elemento_lru(self,n):
         if n == 0:
             return 0
@@ -50,6 +54,7 @@ if __name__ == '__main__':
 
     start = time.time()
     print(fib.calcola_elemento(N))
+    print(fib.ricorsione)
     end = time.time()
     print(f"Elapsed time: {end - start}")#MOLTO LENTO
 #calcolca ogni volta le stesse ose, vedi grafo sulle slide
@@ -57,6 +62,8 @@ if __name__ == '__main__':
 #risparmio tempo e costo ma occupo memoria
     start = time.time()
     print(fib.calcola_elemento_cache(N))
+    print(fib.ricorsioneCache) #usando cache invoco molto molto meno le funzioni
+    # , faccio meno ricorsioni
     end = time.time()
     print(f"Elapsed time with cache: {end - start}")
 

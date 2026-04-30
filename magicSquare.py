@@ -34,7 +34,7 @@ class QuadratoMagico():
                 if self.is_parziale_valid(parziale):
                     nuovo = copy.deepcopy(rimanenti)
                     nuovo.remove(numero)
-                     #2) amdare avanti nella ricorsione
+                         #2) amdare avanti nella ricorsione
                     self._ricorsione(parziale,nuovo)
                 # 3) backtracking
                 parziale.pop()
@@ -82,21 +82,21 @@ class QuadratoMagico():
                 return False
         # 2) controllare colonne
         n_col =max( len(potenziale_soluzione)-self.N*(self.N-1),0)
-        for id_col in range(self.N):
+        for id_col in range(n_col):
             col = potenziale_soluzione[id_col: (self.N - 1) * self.N + id_col + 1:self.N]
             if sum(col) != numero_magico:
                 return False
         # 3) cotrollare diagonale 1
-        for id_diag1 in range(self.N):
-            diag1 = potenziale_soluzione[0:self.N ** 2 + 1:self.N + 1]
-            if sum(diag1) != numero_magico:
-                return False
+       # for id_diag1 in range(self.N):
+        #    diag1 = potenziale_soluzione[0:self.N ** 2 + 1:self.N + 1]
+         #   if sum(diag1) != numero_magico:
+         #       return False
         # 4) controllare diagonale 2
-        somma = 0
-        for indice in range(self.N):
-            somma += potenziale_soluzione[(indice * self.N) + (self.N - 1 - indice)]
-        if somma != numero_magico:
-            return False
+       # somma = 0
+      #  for indice in range(self.N):
+        #    somma += potenziale_soluzione[(indice * self.N) + (self.N - 1 - indice)]
+       # if somma != numero_magico:
+       #     return False
         # 5) passati tutti i controlli, possiamo tornare True
         return True
 
